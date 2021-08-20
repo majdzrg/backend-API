@@ -4,24 +4,27 @@ import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 import { Model } from 'mongoose';
 
-import { AuthCredentialsDto } from './dto/auth-credential.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { LoginUserDto } from './dto/login-user.dto';
 import { User } from './interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
+  [x: string]: any;
   constructor(
     @InjectModel('User') private userModel: Model<User>,
     private jwtService: JwtService
   ) {}
 
-  async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
+  async create(CreateUserDto: CreateUserDto): Promise<void> {
     //...
   }
 
-  async signIn(user: User) {
-    const payload = { username: user.username, sub: user._id };
+  async login(user: any) {
+    const payload = { user };
     return {
-      accessToken: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload),
+      user: user
     };
   }
 

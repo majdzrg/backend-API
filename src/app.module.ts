@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TeacherModule } from './teacher/teacher.module';
 import { UserWaitingModule } from './user-waiting/user-waiting.module';
-import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 
 
@@ -16,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
             useUnifiedTopology: true,
             useCreateIndex:true
     }),
-    UserModule,
+    
     AuthModule,
     
   ],
